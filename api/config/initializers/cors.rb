@@ -11,6 +11,14 @@ require "rack/cors"
 
 Rails.application.config.middleware.insert_before(0, Rack::Cors) do
   allow do
+    origins ['https://campsite-000.cosy.land', 'http://campsite-000.cosy.land']
+    resource '*',
+      headers: :any,
+      methods: [:get, :post, :put, :patch, :delete, :options, :head],
+      credentials: true
+  end
+  
+  allow do
     origins Campsite::DEV_APP_URL.hostname,
       "#{Campsite::DEV_APP_URL.hostname}:#{Campsite::DEV_APP_URL.port}",
       Campsite::PROD_DOT_COM_APP_URL.hostname,

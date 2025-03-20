@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+source ~/.nvm/nvm.sh && nvm install && nvm use
+
+# Install dependencies
+sudo apt update
+sudo apt -y install tmux
+
+# Install pnpm and yarn
+npm i -g pnpm yarn
+
+# Install fly.io
+curl -L https://fly.io/install.sh | sh
+
+# Install overmind
+sudo gem install overmind

@@ -12,7 +12,8 @@ import { Cluster } from 'puppeteer-cluster'
     puppeteerOptions: {
       headless: 'shell',
       executablePath: process.env.NODE_ENV === 'production' ? '/usr/bin/google-chrome' : undefined,
-      args: ['--no-sandbox', '--disable-gpu']
+      args: ['--no-sandbox', '--disable-gpu'],
+      executablePath: '/home/faiz/.cache/puppeteer/chrome/linux-127.0.6533.88/chrome-linux64/chrome'
     }
   })
 

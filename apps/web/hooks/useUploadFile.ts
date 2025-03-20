@@ -82,7 +82,24 @@ export async function handleFile({ file, type, resource, orgSlug }: UploadProps)
     body: formData
   }).catch((err) => {
     Sentry.captureException(err)
+    console.log({err});
+    throw err  // Rethrow the error so it's properly handled
   })
+  
+  if (!result?.ok) {  // Changed from result?.ok to !result?.ok for clarity
+    const errorText = await result.text()  // Get the error details
+    Sentry.captureException('Failed to upload file', { 
+      data: {
+        status: result.status,
+        statusText: result.statusText,
+        errorText
+      } 
+    })
+    throw new Error(`Upload failed: ${result.status} ${result.statusText}`)
+  }
+  
+  return fields.key
+  
 
   if (result?.ok) return fields.key
 

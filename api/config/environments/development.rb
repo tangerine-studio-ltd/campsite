@@ -87,4 +87,21 @@ Rails.application.configure do
   config.hosts << /.+\.campsite\.design/
   config.hosts << /.+\.campsite\.co/
   config.hosts << /.+\.campsite\.com/
+
+  # COSY URLs
+  config.hosts << "campsite.cosy.land"
+  config.hosts << "campsite-000.cosy.land"
+  config.hosts << "campsite-001.cosy.land"
+  config.hosts << "campsite-002.cosy.land"
+  config.hosts << "campsite-003.cosy.land"
+  config.hosts << "campsite-004.cosy.land"
+  config.hosts << "campsite-005.cosy.land"
+  config.hosts << "host.docker.internal:3001"
+  config.hosts << /.+\.cosy\.land/
+
+  # Trust forwarded headers
+  config.action_dispatch.default_headers.clear
+  config.ssl_options = { redirect: false }  # Prevent auto-redirects
+  config.action_dispatch.trusted_proxies = [IPAddr.new('0.0.0.0/0')]  # Trust all IPs in development
+  config.action_dispatch.x_forwarded_proto_check = :redirect_to_https
 end

@@ -264,6 +264,7 @@ export function BookmarkFavicon(props: Props) {
     case 'campsite.com':
     case 'www.campsite.com':
     case 'app.campsite.com':
+    case 'campsite.cosy.land':
       src = '/img/services/campsite.png'
       break
     case 'linear.app':

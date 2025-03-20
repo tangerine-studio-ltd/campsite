@@ -1,22 +1,28 @@
 default: &default
-  adapter: trilogy
+  adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } * ENV.fetch('RAILS_MAX_ASYNC_QUERIES') { 5 } %>
   username: root
-  password:
-  port: 3306
+  password: foo
+  port: 13306
 
 development:
   primary:
     <<: *default
-    database: <%= ENV['ENABLE_PSDB'] ? 'campsite-api' : 'campsite_api_development' %>
-    host: <%= ENV['ENABLE_PSDB'] ? '127.0.0.1' : '' %>
-    port: <%= ENV['ENABLE_PSDB'] ? 3305 : ENV.fetch("DB_PORT", 3306) %>
+    adapter: mysql2
+    database: campsite_api_development
+    username: root
+    password: foo
+    host: 127.0.0.1
+    port: 13306
   primary_replica:
     <<: *default
-    database: <%= ENV['ENABLE_PSDB'] ? 'campsite-api' : 'campsite_api_development' %>
-    host: <%= ENV['ENABLE_PSDB'] ? '127.0.0.1' : '' %>
-    port: <%= ENV['ENABLE_PSDB'] ? 3305 : ENV.fetch("DB_PORT", 3306) %>
+    adapter: mysql2
+    database: campsite_api_development
+    username: root
+    password: foo
+    host: 127.0.0.1
+    port: 13306
     replica: true
 
 # Warning: The database defined as "test" will be erased and
@@ -27,14 +33,16 @@ test:
     <<: *default
     database: campsite_api_test
     host: 127.0.0.1
-    username: <%= ENV.fetch("MYSQL_USER") { "root" } %>
-    password: <%= ENV['MYSQL_PASSWORD'] %>
+    username: root
+    password: foo
+    port: 13306
   primary_replica:
     <<: *default
     database: campsite_api_test
     host: 127.0.0.1
-    username: <%= ENV.fetch("MYSQL_USER") { "root" } %>
-    password: <%= ENV['MYSQL_PASSWORD'] %>
+    username: root
+    password: foo
+    port: 13306
     replica: true
 
 # As with config/credentials.yml, you never want to store sensitive information,

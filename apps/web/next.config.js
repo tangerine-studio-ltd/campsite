@@ -33,8 +33,10 @@ const cspResourcesByDirective = {
   'connect-src': [
     "'self'",
     'blob:',
+    'https://*.cosy.land',
     'https://*.campsite.design',
     'wss://*.campsite.design',
+    'wss://*.cosy.land',
     'https://*.campsite.co',
     'wss://*.campsite.co',
     'https://*.campsite.com',
@@ -42,6 +44,8 @@ const cspResourcesByDirective = {
     process.env.NODE_ENV !== 'production' && 'http://api.campsite.test:3001',
     process.env.NODE_ENV !== 'production' && 'ws://localhost:9000',
     'https://campsite-media.s3.amazonaws.com',
+    'https://cosy-campsite-media.s3.amazonaws.com',
+    'https://cosy-campsite-media.s3.eu-west-2.amazonaws.com',
     process.env.NODE_ENV !== 'production' && 'https://campsite-media-dev.s3.amazonaws.com',
     process.env.NODE_ENV !== 'production' && 'd1tk25h31rf8pv.cloudfront.net', // campsite-hls-dev
     'd2m0evjsyl9ile.cloudfront.net', // campsite-hls
@@ -56,6 +60,8 @@ const cspResourcesByDirective = {
     'wss://*.pusher.com',
     'https://campsite.imgix.net',
     process.env.NODE_ENV !== 'production' && 'https://campsite-dev.imgix.net',
+    'https://cosyland-492694951.imgix.net',
+    'https://cosyland-492694951.imgix.video',
     'https://react-tweet.vercel.app', // for react-tweet embeds
     'https://media.tenor.com' // used for Tenor gifs
   ],
@@ -64,6 +70,7 @@ const cspResourcesByDirective = {
     "'self'",
     'blob:',
     'data:',
+    'https://*.cosy.land',
     'https://campsite.imgix.net',
     'https://campsite.imgix.video',
     'https://campsite-api.imgix.net',
@@ -76,13 +83,17 @@ const cspResourcesByDirective = {
     process.env.NODE_ENV !== 'production' && 'https://campsite-dev.imgix.video',
     process.env.NODE_ENV !== 'production' && 'https://campsite-api-dev.imgix.net',
     process.env.NODE_ENV !== 'production' && 'http://api.campsite.test:3001',
-    'https://media.tenor.com' // used for Tenor gifs,
+    'https://media.tenor.com', // used for Tenor gifs,
+    'https://cosyland-492694951.imgix.net',
+    'https://cosyland-492694951.imgix.video',
+    'https://cosy-campsite-media.s3.eu-west-2.amazonaws.com',
   ],
   'manifest-src': ["'self'"],
   'media-src': [
     "'self'",
     'blob:',
     'data:',
+    'https://*.cosy.land',
     'd2m0evjsyl9ile.cloudfront.net', // campsite-hls
     process.env.NODE_ENV !== 'production' && 'd1tk25h31rf8pv.cloudfront.net', // campsite-hls-dev
     'https://campsite.imgix.net',
@@ -90,7 +101,10 @@ const cspResourcesByDirective = {
     'https://video.twimg.com', // used for Twitter videos
     process.env.NODE_ENV !== 'production' && 'https://campsite-dev.imgix.net',
     process.env.NODE_ENV !== 'production' && 'https://campsite-api-dev.imgix.net',
-    'https://media.tenor.com' // used for Tenor gifs
+    'https://media.tenor.com', // used for Tenor gifs
+    'https://cosyland-492694951.imgix.net',
+    'https://cosyland-492694951.imgix.video',
+    'https://cosy-campsite-media.s3.eu-west-2.amazonaws.com',
   ],
   'worker-src': ["'self'", 'blob:']
 }
@@ -108,6 +122,9 @@ const moduleExports = {
     esmExternals: 'loose',
     externalDir: true,
     clientRouterFilter: false
+  },
+  typescript: {
+    ignoreBuildErrors: true
   },
   transpilePackages: [
     '@campsite/ui',

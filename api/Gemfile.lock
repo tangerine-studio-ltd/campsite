@@ -54,6 +54,9 @@ GEM
       activemodel (= 7.2.0)
       activesupport (= 7.2.0)
       timeout (>= 0.4.0)
+    activerecord-trilogy-adapter (2.2.0)
+      activerecord (~> 7.1.a)
+      trilogy (>= 2.3.0)
     activestorage (7.2.0)
       actionpack (= 7.2.0)
       activejob (= 7.2.0)
@@ -255,6 +258,7 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.4.1)
+    mysql2 (0.5.6)
     nanoid (2.0.0)
     net-http (0.4.1)
       uri
@@ -430,6 +434,7 @@ GEM
       faraday-multipart (>= 1)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
+    rubyzip (2.4.1)
     rufus-scheduler (3.9.1)
       fugit (~> 1.1, >= 1.1.6)
     searchkick (5.3.1)
@@ -472,6 +477,11 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    sqlite3 (2.5.0)
+      mini_portile2 (~> 2.8.0)
+    sqlite3 (2.5.0-arm64-darwin)
+    sqlite3 (2.5.0-x86_64-darwin)
+    sqlite3 (2.5.0-x86_64-linux-gnu)
     stackprof (0.2.23)
     streamio-ffmpeg (3.0.2)
       multi_json (~> 1.8)
@@ -482,7 +492,7 @@ GEM
     tilt (2.4.0)
     timecop (0.9.6)
     timeout (0.4.1)
-    trilogy (2.8.1)
+    trilogy (2.9.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
@@ -527,8 +537,10 @@ PLATFORMS
   x86_64-darwin-21
   x86_64-darwin-22
   x86_64-linux
+  x86_64-linux-gnu
 
 DEPENDENCIES
+  activerecord-trilogy-adapter
   acts_as_list
   aws-sdk-ecs
   aws-sdk-s3
@@ -566,6 +578,7 @@ DEPENDENCIES
   minitest-stub-const
   mocha (~> 2.1)
   mock_redis
+  mysql2 (~> 0.5.6)
   nanoid
   omniauth
   omniauth-google-oauth2
@@ -589,6 +602,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-shopify
   ruby-openai
+  rubyzip
   searchkick
   sentry-rails (~> 5.18)
   sentry-ruby (~> 5.18)
@@ -597,6 +611,7 @@ DEPENDENCIES
   sidekiq-scheduler (~> 5.0)
   slack-ruby-client
   sprockets-rails
+  sqlite3 (>= 1.4)
   stackprof
   streamio-ffmpeg
   strong_password

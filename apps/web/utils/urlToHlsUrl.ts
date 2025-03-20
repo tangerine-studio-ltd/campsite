@@ -1,4 +1,5 @@
 export function urlToHlsUrl(url: string) {
+  return url;
   const urlObj = new URL(url)
   const pathname = urlObj.pathname
   const pathnameWithoutLeadingSlash = pathname.substring(1)

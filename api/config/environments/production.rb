@@ -117,4 +117,14 @@ Rails.application.configure do
 
   # required to access the app via Fly private network
   config.hosts << "campsite-api.internal"
+
+  # COSY URLs
+  config.hosts << "host.docker.internal:3001"
+  config.hosts << "campsite.cosy.land"
+  config.hosts << "campsite-000.cosy.land"
+  config.hosts << "campsite-001.cosy.land"
+  config.hosts << "campsite-002.cosy.land"
+  config.hosts << "campsite-003.cosy.land"
+  config.hosts << "campsite-004.cosy.land"
+  config.hosts << "campsite-005.cosy.land"
 end

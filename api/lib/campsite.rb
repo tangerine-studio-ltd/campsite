@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
 module Campsite
-  DEV_APP_URL = URI.parse(ENV.fetch("DEV_APP_URL", "http://app.campsite.test:3000"))
-  PROD_DOT_COM_APP_URL = URI.parse("https://app.campsite.com")
+  DEV_APP_URL = URI.parse(ENV.fetch("DEV_APP_URL", "https://campsite.cosy.land"))
+  PROD_DOT_COM_APP_URL = URI.parse("https://campsite.cosy.land")
 
   DEV_DESKTOP_APP_PROTOCOL = "campsite-dev://"
   PROD_DESKTOP_APP_PROTOCOL = "campsite://"
 
   DEV_STYLED_TEXT_API_URL = URI.parse("http://localhost:3002")
-  PROD_STYLED_TEXT_API_URL = URI.parse("http://styled-text-server.internal:9000")
+  PROD_STYLED_TEXT_API_URL = URI.parse("http://localhost:9000")
 
   DEV_HTML_TO_IMAGE_URL = URI.parse("http://localhost:9222")
-  PROD_HTML_TO_IMAGE_URL = URI.parse("http://html-to-image.internal:9222")
+  PROD_HTML_TO_IMAGE_URL = URI.parse("http://localhost:9222")
 
   DEV_MARKETING_SITE_URL = URI.parse("http://localhost:3003")
   PROD_MARKETING_SITE_URL = URI.parse("https://campsite.com")

@@ -154,8 +154,16 @@ class Attachment < ApplicationRecord
 
   def url
     return file_path if link?
-
-    build_imgix_url(file_path)
+  
+    if file_type&.start_with?("image")
+      build_imgix_url(file_path)
+    else
+      # Generate a presigned URL that expires in 1 hour
+      S3_BUCKET.object(file_path).presigned_url(
+        :get,
+        expires_in: 1.hour.to_i
+      )
+    end
   end
 
   def extension

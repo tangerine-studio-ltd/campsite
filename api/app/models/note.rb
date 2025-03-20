@@ -263,7 +263,7 @@ class Note < ApplicationRecord
     if Rails.env.production? || ENV["CAMPSITE_NGROK"] == "true"
       build_imgix_folder_url(path)
     else
-      "http://api.campsite.test:3001#{path}"
+      "https://campsite-001.cosy.land#{path}"
     end
   end
 

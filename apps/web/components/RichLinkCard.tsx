@@ -16,6 +16,7 @@ import { SlimOpenGraphCard } from './SlimOpenGraphCard'
 import { TellaPreview } from './TellaPreview'
 import { ThreadPreview } from './ThreadPreview'
 import { YouTubePreview } from './YouTubePreview'
+import { CleanShotPreview } from './CleanShotPreview'
 
 interface RichLinkCardProps {
   className?: string
@@ -31,7 +32,8 @@ const HOST_REGEX = {
   youtube: /(www.)?youtube\.com/i,
   youtubeShort: /(www.)?youtu\.be/i,
   tella: /(www.)?tella\.tv/i,
-  loom: /(www.)?loom\.com/i
+  loom: /(www.)?loom\.com/i,
+  cleanshot: /(www.)?share\.cleanshot\.com/i,
 }
 
 const PATH_REGEX = {
@@ -39,7 +41,8 @@ const PATH_REGEX = {
   threads: /\/@(?<username>[a-z0-9-_]+)\/post\/(?<postId>[a-z0-9-_]+)/i,
   youtubeShort: /\/(?<videoId>[a-z0-9-_]+)(\?|$)/i,
   tella: /\/video\/(?<videoId>[a-z0-9-_]+)\//i,
-  loom: /\/share\/(?<videoId>[0-9a-zA-Z]{22,128})(?:\/.*)?(\?.*)?/i
+  loom: /\/share\/(?<videoId>[0-9a-zA-Z]{22,128})(?:\/.*)?(\?.*)?/i,
+  cleanshot: /\/(?<videoId>[a-zA-Z0-9]+)$/i,
 }
 
 function isTwitterUrl(url: URL) {
@@ -121,6 +124,8 @@ export function RichLinkCard({
     if (videoId) {
       return <LoomPreview className={className} videoId={videoId} />
     }
+  } else if (HOST_REGEX.cleanshot.test(url.host)) {
+    return <CleanShotPreview className={className} url={url.toString()} />
   }
 
   if (display === 'slim') {

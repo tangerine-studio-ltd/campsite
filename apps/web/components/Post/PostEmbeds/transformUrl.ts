@@ -8,7 +8,8 @@ import {
   playRegex,
   riveRegex,
   tomeRegex,
-  youtubeRegex
+  youtubeRegex,
+  cleanshotRegex
 } from '@campsite/regex'
 
 function removeTrailingSlash(url: string) {
@@ -29,6 +30,7 @@ type EmbedType =
   | 'play'
   | 'tome'
   | 'youtube'
+  | 'cleanshot'
 
 export function embedType(link: string) {
   if (link.match(loomRegex)) {
@@ -61,6 +63,10 @@ export function embedType(link: string) {
 
   if (link.match(youtubeRegex)) {
     return 'youtube'
+  }
+
+  if (link.match(cleanshotRegex)) {
+    return 'cleanshot'
   }
 
   return 'link'
@@ -136,6 +142,11 @@ export function transformUrl(type: EmbedType, url: string) {
       src = src.replace(/[?&]t=(\d+)s/g, (_match, t) => `?start=${t}`)
       logo = '/img/embed/youtube.png'
       title = 'YouTube'
+      break
+    case 'cleanshot':
+      src = url.endsWith('/embed') ? url : url + '/embed'
+      logo = '/img/embed/cleanshot.png'
+      title = 'CleanShot'
       break
     default:
       src = url

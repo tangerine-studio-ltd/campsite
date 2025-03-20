@@ -6,6 +6,7 @@ let riveExpression = /^https:\/\/([\w.-]+\.)?rive.app\/s\/[-a-zA-Z0-9()@:%_+.~#?
 let playExpression = /^https:\/\/([\w.-]+\.)?(share\.)createwithplay.com\/project\/[-a-zA-Z0-9()@:%_+.~#?&//=]*$/gi
 let tomeExpression = /^https:\/\/([\w.-]+\.)?tome.app\/[0-9a-zA-Z]*\/[-a-zA-Z0-9()@:%_+.~#?&//=]*$/gi
 let youtubeExpression = /^https:\/\/([\w.-]+\.)?youtube.com\/watch\?v=([-a-zA-Z0-9()@:%_+.~#?&//=]*)$/gi
+let cleanshotExpression = /^https:\/\/([\w.-]+\.)?share\.cleanshot\.com\/[a-zA-Z0-9]+$/gi
 
 export const figmaRegex = new RegExp(figmaExpression)
 export const loomRegex = new RegExp(loomExpression)
@@ -15,6 +16,7 @@ export const riveRegex = new RegExp(riveExpression)
 export const playRegex = new RegExp(playExpression)
 export const tomeRegex = new RegExp(tomeExpression)
 export const youtubeRegex = new RegExp(youtubeExpression)
+export const cleanshotRegex = new RegExp(cleanshotExpression)
 
 // not bulletproof; intended to differentiate between server IDs and client IDs
 export const uuidExpression = /^[a-z,0-9,-]{36,36}$/

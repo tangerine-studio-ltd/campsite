@@ -17,6 +17,7 @@ import { TellaPreview } from './TellaPreview'
 import { ThreadPreview } from './ThreadPreview'
 import { YouTubePreview } from './YouTubePreview'
 import { CleanShotPreview } from './CleanShotPreview'
+import { transformUrl } from './Post/PostEmbeds/transformUrl'
 
 interface RichLinkCardProps {
   className?: string
@@ -125,7 +126,8 @@ export function RichLinkCard({
       return <LoomPreview className={className} videoId={videoId} />
     }
   } else if (HOST_REGEX.cleanshot.test(url.host)) {
-    return <CleanShotPreview className={className} url={url.toString()} />
+    const { src } = transformUrl('cleanshot', url.toString())
+    return <CleanShotPreview className={className} url={src} />
   }
 
   if (display === 'slim') {
